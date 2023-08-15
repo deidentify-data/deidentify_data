@@ -1,3 +1,6 @@
+
+*.ipynb
+
 #personal scratch file
 testing_grounds.py
 #pycharm garbage
