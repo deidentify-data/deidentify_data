@@ -21,6 +21,4 @@ def pool_n1_variance(profile_1, profile_2):
     """
     pooled_mean = pool_mean(profile_1, profile_2)
     n = profile_1.n + profile_2.n
-    return (
-        sum_squares(profile_1) + sum_squares(profile_2) - n * (pooled_mean) ** 2
-    )
+    return sum_squares(profile_1) + sum_squares(profile_2) - n * (pooled_mean) ** 2
