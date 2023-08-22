@@ -1,3 +1,5 @@
+
+
 def pool_mean(profile_1, profile_2):
     """
     Given two NumericProfiles, finds the pooled mean
@@ -7,10 +9,14 @@ def pool_mean(profile_1, profile_2):
     )
     return mean
 
-
 def sum_squares(profile):
     """
     Given a profile, finds the total sum of squares of the dataset
+    Args:
+        profile: 
+
+    Returns:
+
     """
     return profile.n1_variance + profile.n * profile.mean**2
 
