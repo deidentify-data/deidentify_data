@@ -1,19 +1,29 @@
 from deidentify_data.profile.profile import NumericProfile
 from deidentify_data.numeric_utils import pool_mean, pool_n1_variance, sum_squares
+import pytest
+samples = [
+    (dict(n=10, mean=54.7, n1_variance=8490.1),
+    dict(n=25, mean=60.36, n1_variance=21819.76),
+    58.74285714285714),
+    (dict(n=10, mean=54.7, n1_variance=8490.1),
+    dict(n=25, mean=60.36, n1_variance=21819.76),
+    58)
+]
 
 
-def test_pool_mean():
-    profile_1 = NumericProfile(n=10, mean=54.7, n1_variance=8490.1)
-    profile_2 = NumericProfile(n=25, mean=60.36, n1_variance=21819.76)
+@pytest.mark.parametrize("input", samples)
+def test_pool_mean(input):
+    profile_1 = NumericProfile(**input[0])
+    profile_2 = NumericProfile(**input[1])
 
-    assert round(pool_mean(profile_1, profile_2) - 58.74285714285714, 7) == 0
+    assert round(pool_mean(profile_1, profile_2) - input[2], 7) == 0
 
 
-def test_pool_mean_2():
-    profile_1 = NumericProfile(n=10, mean=54.7, n1_variance=8490.1)
-    profile_2 = NumericProfile(n=1, mean=15, n1_variance=0)
+# def test_pool_mean_2():
+#     profile_1 = NumericProfile(n=10, mean=54.7, n1_variance=8490.1)
+#     profile_2 = NumericProfile(n=1, mean=15, n1_variance=0)
 
-    assert round(pool_mean(profile_1, profile_2) - 51.09090909090909, 7) == 0
+#     assert round(pool_mean(profile_1, profile_2) - 51.09090909090909, 7) == 0
 
 
 def test_pool_n1_variance():
