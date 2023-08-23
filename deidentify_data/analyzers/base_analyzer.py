@@ -24,10 +24,16 @@ class BaseTabularAnalyzer(BaseAnalyzer):
     @abstractmethod
     @staticmethod
     def analyze_column() -> BaseProfile:
+        pass
 
     @classmethod
     def analyze(cls, *args, **kwargs) -> Analysis:
+        """
 
+        :param args:
+        :param kwargs:
+        :return:
+        """
 
     # TODO need to come up with some standard arguments for this guy
     @abc.abstractmethod
